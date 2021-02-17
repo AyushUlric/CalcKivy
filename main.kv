@@ -1,0 +1,104 @@
+#:set GREEN (0.3,.8,0,1)
+#:set RED (1,0,0,0.9)
+<CalcButton@BoxLayout>:
+	orientation: 'vertical'
+	padding: 8
+	bg_color: 0,0,0,0.1
+	source_icon: ''
+	text_color: 0,0,0,1
+	MDIconButton:
+		icon: root.source_icon
+		user_font_size: 64
+		md_bg_color: root.bg_color
+		theme_text_color: "Custom"
+		text_color: root.text_color
+		on_release: app.updateLabel(str(root.source_icon))
+
+MDScreen:
+	GridLayout:
+		rows:3
+		MDBoxLayout:
+			orientation: 'vertical'
+			size_hint: (1, 0.3)
+			padding: 0,30
+			GridLayout:
+				rows: 2
+				MDLabel:
+					text: app.TextLabel
+					markup: True
+					font_style: "H1"
+					halign: "right"
+
+				MDLabel:
+					text: app.SecondaryTextLabel
+					halign: "right"
+					valign: "bottom"
+
+		MDBoxLayout:
+			size_hint: (1, .05)
+			orientation: 'vertical'
+
+		MDBoxLayout:
+			orientation: 'vertical'
+			size_hint: (1, 0.65)
+			GridLayout:
+				rows:5
+				cols:4
+				spacing: 5
+				CalcButton:
+					source_icon: "alpha-c"
+					text_color: RED
+				CalcButton:
+					source_icon: "code-brackets"
+					text_color: GREEN
+				CalcButton:
+					source_icon: "percent-outline"
+					text_color: GREEN
+				CalcButton:
+					id: reference
+					source_icon: "division"
+					text_color: GREEN
+				CalcButton:
+					source_icon: "numeric-1"
+				CalcButton:
+					source_icon: "numeric-2"
+				CalcButton:
+					source_icon: "numeric-3"
+				CalcButton:
+					source_icon: "close"
+					text_color: GREEN
+				CalcButton:
+					source_icon: "numeric-4"
+				CalcButton:
+					source_icon: "numeric-5"
+				CalcButton:
+					source_icon: "numeric-6"
+				CalcButton:
+					source_icon: "minus"
+					text_color: GREEN
+				CalcButton:
+					source_icon: "numeric-7"
+				CalcButton:
+					source_icon: "numeric-8"
+				CalcButton:
+					source_icon: "numeric-9"
+				CalcButton:
+					source_icon: "plus"
+					text_color: GREEN
+				CalcButton:
+					source_icon: "plus-minus-variant"
+				CalcButton:
+					source_icon: "numeric-0"
+				CalcButton:
+					source_icon: "decimal"
+				CalcButton:
+					source_icon: "equal"
+					bg_color: GREEN
+					text_color: 1,1,1,1
+	MDFloatingActionButton:
+		icon: "backspace-outline"
+		elevation: 0
+		md_bg_color: 0,0,0,0.1
+		y: reference.y + self.height * 2 - 5
+		x: reference.x + 24
+		on_release: app.backspace()
